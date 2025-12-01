@@ -27,7 +27,6 @@ func main() {
 	}
 
 	p1, _ := partOne(records)
-
 	p2, _ := partTwo(records)
 
 	fmt.Printf("Password for Part 1: %d\n", p1)
