@@ -18,26 +18,26 @@ func main() {
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
-	var rotations []string
+	var records []string
 
 	for scanner.Scan() {
 		line := scanner.Text()
 
-		rotations = append(rotations, line)
+		records = append(records, line)
 	}
 
-	p, _ := findPassword(rotations)
+	p, _ := findPassword(records)
 
 	fmt.Printf("Password: %d\n", p)
 }
 
-func findPassword(rotations []string) (int, error) {
+func findPassword(records []string) (int, error) {
 	res := 0
 	cur := 50
 	prev := 1
 
-	for i := range rotations {
-		line := rotations[i]
+	for i := range records {
+		line := records[i]
 		val, _ := strconv.Atoi(line[1:])
 
 		res += val / 100

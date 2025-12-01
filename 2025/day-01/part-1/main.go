@@ -18,39 +18,29 @@ func main() {
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
-	var rotations []string
+	var records []string
 
 	for scanner.Scan() {
 		line := scanner.Text()
 
-		rotations = append(rotations, line)
+		records = append(records, line)
 	}
 
-	p, err := findPassword(rotations)
-	if err != nil {
-		fmt.Printf("Error acquiring password, %v\n", err)
-		return
-	}
+	p, _ := findPassword(records)
 
 	fmt.Printf("Password: %d\n", p)
 }
 
-func findPassword(rotations []string) (int, error) {
-	if len(rotations) == 0 {
-		return 0, fmt.Errorf("no rotations")
-	}
-
+func findPassword(records []string) (int, error) {
 	password := 0
 	currentPos := 50
 
-	for i := range rotations {
-		line := rotations[i]
-		dir := line[0]
-		numStr := line[1:]
-		num, _ := strconv.Atoi(numStr)
+	for i := range records {
+		line := records[i]
+		num, _ := strconv.Atoi(line[1:])
 
 		num %= 100
-		if dir == 'L' {
+		if line[0] == 'L' {
 			num = -num
 		}
 
