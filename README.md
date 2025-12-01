@@ -1,3 +1,3 @@
 # Advent of Code Collection
 
-## First started in 2025
+## All done in GO
