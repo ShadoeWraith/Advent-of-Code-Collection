@@ -1,11 +1,11 @@
 import fs from "fs";
 
 function main() {
-  const filePath = "input.txt";
+  const filePath: string = "input.txt";
   try {
-    const fileContent = fs.readFileSync(filePath, "utf8");
+    const fileContent: string = fs.readFileSync(filePath, "utf8");
 
-    const records = fileContent.split(/\r?\n/);
+    const records: string[] = fileContent.split(/\r?\n/);
 
     let p1 = partOne(records);
     let p2 = partTwo(records);
