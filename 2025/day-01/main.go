@@ -29,6 +29,7 @@ func main() {
 	p1, _ := partOne(records)
 	p2, _ := partTwo(records)
 
+	fmt.Printf("\n=========== Go Solution ===========\n\n")
 	fmt.Printf("Password for Part 1: %d\n", p1)
 	fmt.Printf("Password for Part 2: %d\n", p2)
 }

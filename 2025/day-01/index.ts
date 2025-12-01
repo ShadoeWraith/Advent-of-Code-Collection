@@ -10,6 +10,7 @@ function main() {
     let p1: number = partOne(records);
     let p2: number = partTwo(records);
 
+    console.log("\n======= TypeScript Solution =======\n");
     console.log("Password for Part 1: ", p1);
     console.log("Password for Part 2: ", p2);
   } catch (err) {
