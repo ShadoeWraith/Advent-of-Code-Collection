@@ -7,8 +7,8 @@ function main() {
 
     const records: string[] = fileContent.split(/\r?\n/);
 
-    let p1 = partOne(records);
-    let p2 = partTwo(records);
+    let p1: number = partOne(records);
+    let p2: number = partTwo(records);
 
     console.log("Password for Part 1: ", p1);
     console.log("Password for Part 2: ", p2);
