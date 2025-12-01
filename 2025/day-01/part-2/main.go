@@ -34,7 +34,7 @@ func main() {
 func findPassword(records []string) (int, error) {
 	res := 0
 	cur := 50
-	prev := 1
+	prev := 0
 
 	for i := range records {
 		line := records[i]
