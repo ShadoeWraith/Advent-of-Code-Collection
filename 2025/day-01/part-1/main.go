@@ -32,29 +32,29 @@ func main() {
 }
 
 func findPassword(records []string) (int, error) {
-	password := 0
-	currentPos := 50
+	res := 0
+	cur := 50
 
 	for i := range records {
 		line := records[i]
-		num, _ := strconv.Atoi(line[1:])
+		val, _ := strconv.Atoi(line[1:])
 
-		num %= 100
+		val %= 100
 		if line[0] == 'L' {
-			num = -num
+			val = -val
 		}
 
-		currentPos += num
+		cur += val
 
-		if currentPos > 99 {
-			currentPos -= 100
-		} else if currentPos < 0 {
-			currentPos += 100
+		if cur > 99 {
+			cur -= 100
+		} else if cur < 0 {
+			cur += 100
 		}
-		if currentPos == 0 {
-			password++
+		if cur == 0 {
+			res++
 		}
 	}
 
-	return password, nil
+	return res, nil
 }
