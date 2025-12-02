@@ -53,7 +53,7 @@ func partTwo(records []string) (int, error) {
 		}
 	}
 
-	return int(res), nil
+	return res, nil
 }
 
 func isInvalidID(s string) bool {
