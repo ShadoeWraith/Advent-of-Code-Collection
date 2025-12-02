@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	filePath := "input.txt"
+	filePath := "./input.txt"
 
 	file, err := os.Open(filePath)
 	if err != nil {
@@ -26,45 +26,10 @@ func main() {
 		records = append(records, line)
 	}
 
-	p1, _ := partOne(records)
-	p2, _ := partTwo(records)
+	res, _ := partTwo(records)
 
-	fmt.Printf("\n=========== Go Solution ===========\n\n")
-	fmt.Printf("Password for Part 1: %d\n", p1)
-	fmt.Printf("Password for Part 2: %d\n", p2)
+	fmt.Printf("Password for Part 2: %d\n", res)
 }
-
-// Part One =====================================================
-
-func partOne(records []string) (int, error) {
-	res := 0
-	cur := 50
-
-	for i := range records {
-		line := records[i]
-		val, _ := strconv.Atoi(line[1:])
-
-		val %= 100
-		if line[0] == 'L' {
-			val = -val
-		}
-
-		cur += val
-
-		if cur > 99 {
-			cur -= 100
-		} else if cur < 0 {
-			cur += 100
-		}
-		if cur == 0 {
-			res++
-		}
-	}
-
-	return res, nil
-}
-
-// Part Two =====================================================
 
 func partTwo(records []string) (int, error) {
 	res := 0
