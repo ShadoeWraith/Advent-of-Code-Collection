@@ -10,16 +10,6 @@ _"Advent of Code is an Advent calendar of small programming puzzles for a variet
 
 ### 2025 Solutions
 
-# Daily Solutions Reference
-
-# Advent of Code 2025 Solutions
-
-# Advent of Code 2025 Solutions
-
-# Advent of Code 2025 Solutions
-
-# Advent of Code 2025 Solutions
-
 | Day        | Title               | Part 1 Status | Part 2 Status | Part 1 Link                                                                                                    | Part 2 Link                                                                                                    |
 | :--------- | :------------------ | :------------ | :------------ | :------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------- |
 | **Day 1**  | **Secret Entrance** | ✅            | ✅            | [Go Solution](https://github.com/ShadoeWraith/Advent-of-Code-Collection/blob/main/2025/day-01/part-1/main.go)  | [Go Solution](https://github.com/ShadoeWraith/Advent-of-Code-Collection/blob/main/2025/day-01/part-2/main.go)  |
