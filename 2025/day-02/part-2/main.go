@@ -63,13 +63,13 @@ func isInvalidID(s string) bool {
 		return false
 	}
 
-	for pLen := 1; pLen <= n/2; pLen++ {
-		if n%pLen == 0 {
-			pattern := s[:pLen]
+	for i := 1; i <= n/2; i++ {
+		if n%i == 0 {
+			pattern := s[:i]
 			isRepeat := true
 
-			for i := pLen; i < n; i += pLen {
-				segment := s[i : i+pLen]
+			for j := i; j < n; j += i {
+				segment := s[j : j+i]
 
 				if segment != pattern {
 					isRepeat = false
