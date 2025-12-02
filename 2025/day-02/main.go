@@ -64,10 +64,14 @@ func partOne(records []string) (int, error) {
 }
 
 func partTwo(records []string) (int, error) {
-	res := 0
+	var res = 0
 
 	for _, record := range records {
 		hyphenIndex := strings.Index(record, "-")
+		if hyphenIndex == -1 {
+			return 0, fmt.Errorf("invalid record format: %s", record)
+		}
+
 		r1 := record[:hyphenIndex]
 		r2 := record[hyphenIndex+1:]
 
@@ -77,26 +81,38 @@ func partTwo(records []string) (int, error) {
 		for val := start; val <= end; val++ {
 			s := strconv.Itoa(val)
 
-			midFirstHalf := s[:len(s)/2]
-			midSecondHalf := s[len(s)/2:]
-
-			if midFirstHalf == midSecondHalf {
+			if isInvalidID(s) {
 				res += val
 			}
 		}
-		for i := 1; i < len(r1); i++ {
-			val := ""
-			cur := []byte{r1[0]}
-			repeatingCount := 0
-			if cur[0] == r1[i] {
+	}
+	return int(res), nil
+}
 
-				repeatingCount++
-				fmt.Println("repeated:", r1)
-			} else {
-				cur = append(cur, r1[i])
-				val += r1[:i]
+func isInvalidID(s string) bool {
+	n := len(s)
+	if n < 2 {
+		return false
+	}
+
+	for pLen := 1; pLen <= n/2; pLen++ {
+		if n%pLen == 0 {
+			pattern := s[:pLen]
+			isRepeat := true
+
+			for i := pLen; i < n; i += pLen {
+				segment := s[i : i+pLen]
+
+				if segment != pattern {
+					isRepeat = false
+					break
+				}
+			}
+
+			if isRepeat {
+				return true
 			}
 		}
 	}
-	return res, nil
+	return false
 }
