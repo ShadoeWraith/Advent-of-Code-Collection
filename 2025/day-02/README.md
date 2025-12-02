@@ -1,4 +1,4 @@
-# Day 2: Gift Shop
+# [Day 2: Gift Shop](https://adventofcode.com/2025/day/2)
 
 ## Part 1
 
