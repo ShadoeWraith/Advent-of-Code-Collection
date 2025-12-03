@@ -20,8 +20,8 @@ func PartOne(records []string) (int, error) {
 
 		subSlice := record[highestDigitIndex+1:]
 
-		for _, char := range subSlice {
-			digit := int(char - '0')
+		for i := range subSlice {
+			digit := int(subSlice[i] - '0')
 
 			if digit > joltage[1] {
 				joltage[1] = digit
