@@ -1,43 +1,60 @@
 package solutions
 
-import "strconv"
+import (
+	"strconv"
+)
+
+// Used AI to help find solve this.
+// Wasn't familiar with the "greedy algorithm" prior to this.
 
 func PartTwo(records []string) (int, error) {
-	res := 0
+	totalJoltage := 0
 
 	for _, record := range records {
-		joltage := [2]int{}
-		highestDigitIndex := 0
 
-		for i := 0; i < len(record)-1; i++ {
-			digit := int(record[i] - '0')
+		joltageString := ""
 
-			if digit > joltage[0] {
-				joltage[0] = digit
-				highestDigitIndex = i
+		const totalDigitsToSelect int = 12
+		totalDigitsToOmit := len(record) - totalDigitsToSelect
+
+		currentPos := 0
+
+		omissionsRemaining := totalDigitsToOmit
+
+		for i := range totalDigitsToSelect {
+			digitsToComplete := totalDigitsToSelect - i
+
+			searchLimit := len(record) - digitsToComplete
+
+			limitIndex := currentPos + omissionsRemaining
+			if searchLimit < limitIndex {
+				limitIndex = searchLimit
 			}
-		}
 
-		subSlice := record[highestDigitIndex+1:]
+			bestDigit := 0
+			bestIndex := 0
 
-		for i := range subSlice {
-			digit := int(subSlice[i] - '0')
+			for j := currentPos; j <= limitIndex; j++ {
+				digit := int(record[j] - '0')
 
-			if digit > joltage[1] {
-				joltage[1] = digit
+				if digit > bestDigit {
+					bestDigit = digit
+					bestIndex = j
+				}
 			}
+
+			joltageString += strconv.Itoa(bestDigit)
+
+			omitted := bestIndex - currentPos
+			omissionsRemaining -= omitted
+
+			currentPos = bestIndex + 1
 		}
 
-		resString := ""
+		resInt, _ := strconv.Atoi(joltageString)
 
-		for i := range joltage {
-			resString += strconv.Itoa(joltage[i])
-		}
-
-		resInt, _ := strconv.Atoi(resString)
-
-		res += resInt
+		totalJoltage += resInt
 	}
 
-	return res, nil
+	return totalJoltage, nil
 }
