@@ -59,10 +59,6 @@ func partTwo(records []string) (int, error) {
 func isInvalidID(s string) bool {
 	sLen := len(s)
 
-	if sLen < 2 {
-		return false
-	}
-
 	for i := 1; i <= sLen/2; i++ {
 		if sLen%i == 0 {
 			pattern := s[:i]
