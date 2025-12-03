@@ -26,10 +26,7 @@ func PartTwo(records []string) (int, error) {
 
 			searchLimit := len(record) - digitsToComplete
 
-			limitIndex := currentPos + omissionsRemaining
-			if searchLimit < limitIndex {
-				limitIndex = searchLimit
-			}
+			limitIndex := min(searchLimit, currentPos+omissionsRemaining)
 
 			bestDigit := 0
 			bestIndex := 0
