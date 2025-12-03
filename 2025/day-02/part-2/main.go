@@ -57,18 +57,18 @@ func partTwo(records []string) (int, error) {
 }
 
 func isInvalidID(s string) bool {
-	n := len(s)
+	sLen := len(s)
 
-	if n < 2 {
+	if sLen < 2 {
 		return false
 	}
 
-	for i := 1; i <= n/2; i++ {
-		if n%i == 0 {
+	for i := 1; i <= sLen/2; i++ {
+		if sLen%i == 0 {
 			pattern := s[:i]
 			isRepeat := true
 
-			for j := i; j < n; j += i {
+			for j := i; j < sLen; j += i {
 				segment := s[j : j+i]
 
 				if segment != pattern {
