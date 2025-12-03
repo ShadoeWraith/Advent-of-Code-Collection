@@ -4,8 +4,6 @@ import (
 	"strconv"
 )
 
-// Part One =====================================================
-
 func PartOne(records []string) (int, error) {
 	res := 0
 	cur := 50
