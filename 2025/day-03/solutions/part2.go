@@ -34,9 +34,9 @@ func PartTwo(records []string) (int, error) {
 			resString += strconv.Itoa(joltage[i])
 		}
 
-		fixedRes, _ := strconv.Atoi(resString)
+		resInt, _ := strconv.Atoi(resString)
 
-		res += fixedRes
+		res += resInt
 	}
 
 	return res, nil
