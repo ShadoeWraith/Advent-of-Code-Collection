@@ -2,29 +2,12 @@ package main
 
 import (
 	"AoC/2025/day-01/solutions"
-	"bufio"
+	"AoC/utils"
 	"fmt"
-	"os"
 )
 
 func main() {
-	filePath := "input.txt"
-
-	file, err := os.Open(filePath)
-	if err != nil {
-		fmt.Printf("Error reading from file, %v\n", err)
-		return
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-	var records []string
-
-	for scanner.Scan() {
-		vals := scanner.Text()
-
-		records = append(records, vals)
-	}
+	records := utils.ReadFromFile()
 
 	part1Res, _ := solutions.PartOne(records)
 	part2Res, _ := solutions.PartTwo(records)
