@@ -1,37 +1,67 @@
 package solutions
 
-// Was late to starting so didn't do part 2
+// Didn't have time to finish Part Two, So got a Solution to view and learn from.
+
+func deepCopyGrid(original Grid) Grid {
+	newGrid := make(Grid, len(original))
+	for i := range original {
+		newGrid[i] = make([]rune, len(original[i]))
+		copy(newGrid[i], original[i])
+	}
+	return newGrid
+}
 
 func PartTwo(records []string) (int, error) {
 
-	var grid Grid
-
+	var initialGrid Grid
 	for _, row := range records {
-		grid = append(grid, []rune(row))
+		initialGrid = append(initialGrid, []rune(row))
 	}
 
-	accessibleRollsCount := 0
+	currentGrid := deepCopyGrid(initialGrid)
+	totalRemovedCount := 0
 
-	for i := 0; i < len(grid); i++ {
-		for j := 0; j < len(grid[i]); j++ {
+	for {
+		removals := make([][2]int, 0)
 
-			if grid[i][j] == '@' {
+		R := len(currentGrid)
+		if R == 0 {
+			break
+		}
+		C := len(currentGrid[0])
 
-				neighbors := getNeighbors(grid, i, j)
+		for r := 0; r < R; r++ {
+			for c := 0; c < C; c++ {
 
-				adjacentRollsCount := 0
-				for _, neighbor := range neighbors {
-					if neighbor == '@' {
-						adjacentRollsCount++
+				if currentGrid[r][c] == '@' {
+
+					neighbors := getNeighbors(currentGrid, r, c)
+
+					adjacentRollsCount := 0
+					for _, neighbor := range neighbors {
+						if neighbor == '@' {
+							adjacentRollsCount++
+						}
 					}
-				}
 
-				if adjacentRollsCount < 4 {
-					accessibleRollsCount++
+					if adjacentRollsCount < 4 {
+						removals = append(removals, [2]int{r, c})
+					}
 				}
 			}
 		}
+
+		if len(removals) == 0 {
+			break
+		}
+
+		for _, pos := range removals {
+			r, c := pos[0], pos[1]
+			currentGrid[r][c] = '.'
+		}
+
+		totalRemovedCount += len(removals)
 	}
 
-	return accessibleRollsCount, nil
+	return totalRemovedCount, nil
 }
