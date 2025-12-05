@@ -30,8 +30,8 @@ func PartTwo(records []string) (int, error) {
 		}
 		C := len(currentGrid[0])
 
-		for r := 0; r < R; r++ {
-			for c := 0; c < C; c++ {
+		for r := range R {
+			for c := range C {
 
 				if currentGrid[r][c] == '@' {
 
