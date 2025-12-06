@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
 
 func ReadFromFile() []string {
@@ -22,6 +23,8 @@ func ReadFromFile() []string {
 	var lines []string
 	for scanner.Scan() {
 		line := scanner.Text()
+		fields := strings.Fields(line)
+		line = strings.Join(fields, " ")
 		lines = append(lines, line)
 	}
 
